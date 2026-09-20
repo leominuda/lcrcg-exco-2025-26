@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LCRCG ExCo 2025/26 - Project Evidence Archive</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #d8d5cc;
+    --bg: #faf9f5;
+    --card: #ffffff;
+    --accent: #2f5233;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  header {
+    border-bottom: 1px solid var(--line);
+    padding: 3rem 1.5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  header .eyebrow {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    margin: 0 0 0.5rem;
+  }
+  header h1 {
+    font-size: clamp(30px, 5vw, 44px);
+    margin: 0 0 0.6rem;
+    font-weight: 400;
+  }
+  header p.desc {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 60ch;
+    margin: 0;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+  .project-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .project-list li {
+    border-bottom: 1px solid var(--line);
+  }
+  .project-list a {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 0.3rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .project-list a:hover {
+    background: var(--card);
+  }
+  .project-list .name {
+    font-size: 18px;
+  }
+  .project-list .arrow {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Centennial Leo Club of Richmond College</p>
+  <h1>Project evidence archive</h1>
+  <p class="desc">Supporting photographs, reports, and documentation for all projects conducted during the Leoistic Year 2025/26, maintained by the club's Executive Committee.</p>
+</header>
+
+<main>
+  <ul class="project-list" id="project-list"></ul>
+</main>
+
+<footer>
+  Each project's files are also permanently archived on Zenodo. The DOI for each project appears on its corresponding certification letter.
+</footer>
+
+<script>
+  const projects = [
+    "inspiration-25",
+    "path-of-harvest",
+    "tide-of-hope",
+    "we-say-thanks",
+    "picasso-art-competition",
+    "alms-giving",
+    "impact-ink",
+    "danumata-saviyak",
+    "neela-diyawara",
+    "youth-to-the-elderly",
+    "reshade",
+    "stop-swap",
+    "earthboost",
+    "picasso-phase-02",
+    "tshirt-fundraiser",
+    "kaalaartha",
+    "light-of-care",
+    "suraksha"
+  ];
+
+  function prettyName(slug) {
+    return slug
+      .split("-")
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ");
+  }
+
+  const list = document.getElementById("project-list");
+  projects.forEach(slug => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = `project.html?folder=${slug}`;
+    const name = document.createElement("span");
+    name.className = "name";
+    name.textContent = prettyName(slug);
+    const arrow = document.createElement("span");
+    arrow.className = "arrow";
+    arrow.textContent = "View files";
+    a.appendChild(name);
+    a.appendChild(arrow);
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+</script>
+
+</body>
+</html>
